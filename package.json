@@ -1,5 +1,19 @@
 {
   "dependencies": {
+    "cors": "^2.8.5",
+    "ejs": "^3.1.10",
+    "express": "^4.21.0",
+    "mqtt": "^5.10.1",
     "node-bacnet": "^0.2.4"
-  }
+  },
+  "name": "mstpread",
+  "version": "1.0.0",
+  "main": "app.js",
+  "scripts": {
+    "start": "node appMstp",
+    "dev": "node --watch appMstp"
+  },
+  "author": "",
+  "license": "ISC",
+  "description": ""
 }

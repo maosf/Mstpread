@@ -20,7 +20,7 @@
         ul{
             font-family: Verdana, Geneva, Tahoma, sans-serif;
             list-style: none;
-            width: 35%;
+            width: 300px;
         }
         li{
             display: flex;
@@ -41,7 +41,7 @@
     <script>
         // Retrieve sensor data from server response
         const sensorData = {SENSOR_DATA};
-        // const rooms = {rooms};
+        const rooms = {rooms};
 
         // Populate sensor data in the HTML
         const sensorList = document.getElementById('sensorList');
@@ -51,8 +51,8 @@
             listItem.style.display='flex';
             listItem.style.cursor='pointer';
             (sensorData[objectId]>26)? (listItem.style.color="red") : (sensorData[objectId]>24)? (listItem.style.color="yellow"):(sensorData[objectId]<21)?(listItem.style.color="steelblue"):(listItem.style.color="lightgreen");
-            listItem.innerHTML ='<div>'+ `rooms ${objectId} temp is: `+'</div>';
-            listItem.innerHTML=listItem.innerHTML+'<div>'+`${sensorData[objectId]} C`+'</div>';
+            listItem.innerHTML ='<div>'+ `${rooms[objectId]} temp is: `+'</div>';
+            listItem.innerHTML=listItem.innerHTML+'<div>'+` `+ `${sensorData[objectId]} C`+'</div>';
             listItem.onclick=function(){alert("hello")};
             sensorList.appendChild(listItem);
         });

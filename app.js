@@ -1,13 +1,13 @@
 const BACnet = require('node-bacnet');
 // Initialize the BACnet client
 const client = new BACnet({
-  apduTimeout: 6000 // Adjust based on network latency
+  apduTimeout: 3000 // Adjust based on network latency
 });
 
 // Define your parameters
 const routerAddress = {
-  ip: '192.168.10.68',   // IP address of the BACnet/IP-MSTP router
-  net: 2001,             // Network number 
+  ip: '192.168.10.24',   // IP address of the BACnet/IP-MSTP router
+  net: 2000,             // Network number 
   adr: [3 ]              // MSTP address of the target device (5 in this case)
 };
 

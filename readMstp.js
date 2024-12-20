@@ -13,14 +13,11 @@ const mstpNetworkNumber = 2001; // Network number of the MSTP device
 // MSTP device addressing for office
 const deviceInstance = 203; // Device ID of the MSTP device
 const mstpMacAddress = 3; // MSTP MAC address of the target device (1-127)
-const objectId = { type: Bacnet.enum.ObjectType.ANALOG_INPUT, instance: 3 };
-
-
-
-
+const objectId = { type: 0, instance: 3 };
 
 // Define the property to read (Present Value)
-const propertyId = Bacnet.enum.PropertyIdentifier.PRESENT_VALUE;
+// const propertyId = Bacnet.enum.PropertyIdentifier.PRESENT_VALUE;
+const propertyId = 85;
 
 // Create the BACnet address for the MSTP device through the IP/MSTP gateway
 const mstpDeviceAddress = {
@@ -35,7 +32,9 @@ client.readProperty(mstpDeviceAddress, objectId, propertyId, (err, value) => {
         console.error('Error reading property from MSTP device:', err);
         client.close();
     } else {
-        console.log('Property value from MSTP device:', value);
+        console.log('Property object from MSTP device:', value);
+        console.log('Property temp from MSTP device:',Number( value.values[0].value).toFixed(1));
+
         client.close();
     }
 
