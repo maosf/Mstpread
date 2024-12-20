@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="style.css">
+    <meta http-equiv="refresh" content="10">  <!-- refresh the page in every 3 seconds -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BACnet Sensor Data</title>
+    <style>
+        .container{
+            width: 80%;
+            background: black;
+            color:white; 
+            font-family: Arial, Helvetica, sans-serif; 
+            display: flex;
+            flex-direction: column; 
+            align-items: center; 
+            margin: auto;
+        }
+        ul{
+            font-family: Verdana, Geneva, Tahoma, sans-serif;
+            list-style: none;
+            width: 35%;
+        }
+        li{
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+        }
+        div{
+            display: inline-block;
+        }
+    </style>
+</head>
+<body class='container'>
+    <h1>BACnet Sensor Data</h1>
+    <ul  id="sensorList" >
+        <!-- Sensor data will be inserted here dynamically -->
+    </ul>
+
+    <script>
+        // Retrieve sensor data from server response
+        const sensorData = {SENSOR_DATA};
+        // const rooms = {rooms};
+
+        // Populate sensor data in the HTML
+        const sensorList = document.getElementById('sensorList');
+        Object.keys(sensorData).forEach(objectId => {
+            const listItem = document.createElement('li');
+            listItem.style.padding="10px";
+            listItem.style.display='flex';
+            listItem.style.cursor='pointer';
+            (sensorData[objectId]>26)? (listItem.style.color="red") : (sensorData[objectId]>24)? (listItem.style.color="yellow"):(sensorData[objectId]<21)?(listItem.style.color="steelblue"):(listItem.style.color="lightgreen");
+            listItem.innerHTML ='<div>'+ `rooms ${objectId} temp is: `+'</div>';
+            listItem.innerHTML=listItem.innerHTML+'<div>'+`${sensorData[objectId]} C`+'</div>';
+            listItem.onclick=function(){alert("hello")};
+            sensorList.appendChild(listItem);
+        });
+        // setTimeout(function(){
+        //     window.location.reload(1)
+        // },5000);
+       
+    </script>
+</body>
+</html>
